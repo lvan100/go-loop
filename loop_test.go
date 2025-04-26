@@ -56,7 +56,7 @@ func TestTimes(t *testing.T) {
 	loop.Times(5, func(i int) {
 		arr = append(arr, i)
 	})
-	assert.Equal(t, arr, []int{0, 1, 2, 3, 4})
+	assert.That(t, arr).Equal([]int{0, 1, 2, 3, 4})
 }
 
 func TestRanges(t *testing.T) {
@@ -64,12 +64,12 @@ func TestRanges(t *testing.T) {
 	loop.Ranges(1, 5, func(i int) {
 		arr = append(arr, i)
 	})
-	assert.Equal(t, arr, []int{1, 2, 3, 4})
+	assert.That(t, arr).Equal([]int{1, 2, 3, 4})
 	arr = nil
 	loop.Ranges(5, 1, func(i int) {
 		arr = append(arr, i)
 	})
-	assert.Equal(t, arr, []int{5, 4, 3, 2})
+	assert.That(t, arr).Equal([]int{5, 4, 3, 2})
 }
 
 func TestStepRanges(t *testing.T) {
@@ -77,10 +77,10 @@ func TestStepRanges(t *testing.T) {
 	loop.StepRanges(1, 5, 2, func(i int) {
 		arr = append(arr, i)
 	})
-	assert.Equal(t, arr, []int{1, 3})
+	assert.That(t, arr).Equal([]int{1, 3})
 	arr = nil
 	loop.StepRanges(5, 1, -2, func(i int) {
 		arr = append(arr, i)
 	})
-	assert.Equal(t, arr, []int{5, 3})
+	assert.That(t, arr).Equal([]int{5, 3})
 }
