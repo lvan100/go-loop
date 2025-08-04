@@ -19,7 +19,7 @@ package loop_test
 import (
 	"testing"
 
-	"github.com/lvan100/go-assert"
+	"github.com/go-spring/gs-assert/assert"
 	"github.com/lvan100/go-loop"
 )
 
