@@ -14,13 +14,12 @@
  * limitations under the License.
  */
 
-package loop_test
+package loop
 
 import (
 	"testing"
 
 	"github.com/go-spring/gs-assert/assert"
-	"github.com/lvan100/go-loop"
 )
 
 func fibonacci(n int) int {
@@ -44,7 +43,7 @@ func BenchmarkRanges(b *testing.B) {
 
 	b.Run("loop", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
-			loop.Times(5, func(i int) {
+			Times(5, func(i int) {
 				fibonacci(N)
 			})
 		}
@@ -53,7 +52,7 @@ func BenchmarkRanges(b *testing.B) {
 
 func TestTimes(t *testing.T) {
 	var arr []int
-	loop.Times(5, func(i int) {
+	Times(5, func(i int) {
 		arr = append(arr, i)
 	})
 	assert.That(t, arr).Equal([]int{0, 1, 2, 3, 4})
@@ -61,12 +60,12 @@ func TestTimes(t *testing.T) {
 
 func TestRanges(t *testing.T) {
 	var arr []int
-	loop.Ranges(1, 5, func(i int) {
+	Ranges(1, 5, func(i int) {
 		arr = append(arr, i)
 	})
 	assert.That(t, arr).Equal([]int{1, 2, 3, 4})
 	arr = nil
-	loop.Ranges(5, 1, func(i int) {
+	Ranges(5, 1, func(i int) {
 		arr = append(arr, i)
 	})
 	assert.That(t, arr).Equal([]int{5, 4, 3, 2})
@@ -74,12 +73,12 @@ func TestRanges(t *testing.T) {
 
 func TestStepRanges(t *testing.T) {
 	var arr []int
-	loop.StepRanges(1, 5, 2, func(i int) {
+	StepRanges(1, 5, 2, func(i int) {
 		arr = append(arr, i)
 	})
 	assert.That(t, arr).Equal([]int{1, 3})
 	arr = nil
-	loop.StepRanges(5, 1, -2, func(i int) {
+	StepRanges(5, 1, -2, func(i int) {
 		arr = append(arr, i)
 	})
 	assert.That(t, arr).Equal([]int{5, 3})
